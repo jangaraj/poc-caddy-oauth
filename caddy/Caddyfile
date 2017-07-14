@@ -1,0 +1,34 @@
+0.0.0.0
+
+log stdout
+
+errors stdout
+
+root /srv
+
+# which path should be protected and where to redirect, when jwt is not present
+jwt {
+   path /
+   redirect /login
+}
+
+# /login configuration
+login {
+    github client_id=e32281efc684086f9b5e,client_secret=800ceafebb5cb2f303dfd829fe46985fcb5ac475
+}
+
+# reverse proxy to ext site http://volkswagen.com
+# test http://192.168.32.128:2015/en.html
+# problem with http URL redirects 301/302, web resource path
+
+#proxy /volkswagen http://volkswagen.com {
+#  without /volkswagen
+#}
+
+proxy / backend:8081 {
+  transparent
+}
+
+#proxy / http://volkswagen.com {
+#
+#}
