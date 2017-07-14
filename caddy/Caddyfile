@@ -1,10 +1,19 @@
 0.0.0.0
 
-log stdout
+# LB will handle encryption
+tls off
+
+log / stdout "{common} {request_id} {>Referer} \"{>User-Agent}\""
 
 errors stdout
 
 root /srv
+
+# generate reguest id
+request_id
+
+# send request id header back to browser
+header /  "X-Request-Id" {request_id}
 
 # which path should be protected and where to redirect, when jwt is not present
 jwt {
@@ -27,6 +36,7 @@ login {
 
 proxy / backend:8081 {
   transparent
+  header_upstream X-Request-Id {request_id}
 }
 
 #proxy / http://volkswagen.com {
