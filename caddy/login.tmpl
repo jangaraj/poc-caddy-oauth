@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      {{template "styles" . }}
+      <!-- your styles -->
+  <head>
+  <body>
+      Custom login template:<br /><br />
+      <!-- your header -->
+
+      {{ if .Error}}
+        <div class="alert alert-danger" role="alert">
+          <strong>Internal Error. </strong> Please try again later.
+        </div>
+      {{end}}
+
+      {{if .Authenticated}}
+
+         {{template "userInfo" . }}
+
+      {{else}}
+
+        {{template "login" . }}
+
+      {{end}}
+
+      <!-- your footer -->
+</body>
+</html>

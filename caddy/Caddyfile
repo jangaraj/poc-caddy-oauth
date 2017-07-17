@@ -3,7 +3,7 @@
 # LB will handle encryption
 tls off
 
-log / stdout "{common} {request_id} {>Referer} \"{>User-Agent}\""
+log / stdout "{common} {latency_ms} {request_id} {~jwt_token} {>Token-Claim-User} {>Referer} \"{>User-Agent}\""
 
 errors stdout
 
@@ -23,6 +23,8 @@ jwt {
 
 # /login configuration
 login {
+    success_url /
+    # template /login.tmpl
     github client_id=e32281efc684086f9b5e,client_secret=800ceafebb5cb2f303dfd829fe46985fcb5ac475
 }
 

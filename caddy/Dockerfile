@@ -16,6 +16,7 @@ FROM scratch
 WORKDIR /
 COPY --from=build /go/src/github.com/mholt/caddy/caddy/caddy /
 COPY --from=cert /etc/ssl/certs /etc/ssl/certs
+COPY login.tmpl /
 COPY Caddyfile /
  
 CMD ["/caddy", "-quic", "--conf", "/Caddyfile"]

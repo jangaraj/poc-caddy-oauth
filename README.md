@@ -22,3 +22,8 @@ Pros:
 - JWT - fast local authentification
 - perfect for API microservice calls
 
+## Alternatives
+
+- https://github.com/gambol99/keycloak-proxy (Golang) 
+- https://github.com/bitly/oauth2_proxy (Golang)
+- https://github.com/jaimejorge/rig (Golang)
