@@ -36,7 +36,7 @@ login {
 #  without /volkswagen
 #}
 
-proxy / backend:8081 {
+proxy / localhost:8081 {
   transparent
   header_upstream X-Request-Id {request_id}
 }
